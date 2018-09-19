@@ -24,10 +24,15 @@ DROP TABLE IF EXISTS `empleado`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `empleado` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cedula` int(20) unsigned NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
+  `cargo` varchar(30) DEFAULT NULL,
+  `direccion` varchar(40) DEFAULT NULL,
   `template` blob,
+  `quality` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `cedula` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-19  8:53:41
+-- Dump completed on 2018-09-19 11:52:30
