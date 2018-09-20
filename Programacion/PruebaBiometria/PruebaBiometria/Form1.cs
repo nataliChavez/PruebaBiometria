@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GriauleFingerprintLibrary;
+using GriauleFingerprintLibrary.Exceptions;
 
 namespace PruebaBiometria
 {
@@ -15,6 +17,75 @@ namespace PruebaBiometria
         public Form1()
         {
             InitializeComponent();
+
+            fingerPrint = new FingerprintCore();
+            fingerPrint.onStatus += new StatusEventHandler(fingerPrint_onStatus);
+            //fingerPrint.onFinger += new FingerEventHandler(fingerPrint_onFinger);
+            fingerPrint.onImage += new ImageEventHandler(fingerPrint_onImage);
+        }
+
+        private FingerprintCore fingerPrint;
+        private GriauleFingerprintLibrary.DataTypes.FingerprintRawImage rawImage;
+        GriauleFingerprintLibrary.DataTypes.FingerprintTemplate _template;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fingerPrint_onImage(object source, GriauleFingerprintLibrary.Events.ImageEventArgs ie)
+        {
+            rawImage = ie.RawImage;
+            SetImage(ie.RawImage.Image);
+
+            ExtractTemplate();
+        }
+
+        private void ExtractTemplate()
+        {
+            if (rawImage != null)
+            {
+                try
+                {
+                    _template = null;
+                    fingerPrint.Extract(rawImage, ref _template);
+
+                    SetQualityBar(_template.Quality);
+
+                    DisplayImage(_template, false);
+                }
+                catch 
+                {
+
+                    SetQualityBar(-1);
+                }
+            }
+        }
+
+        private delegate void delSetImage(Image img);
+        void SetImage(Image img)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new delSetImage(SetImage), new object[] { img });
+            }
+            else
+            {
+                Bitmap bmp = new Bitmap(img, pictureBox1.Width, pictureBox1.Height);
+                pictureBox1.Image = bmp;
+            }
+        }
+
+        void fingerPrint_onStatus(object source, GriauleFingerprintLibrary.Events.StatusEventArgs se)
+        {
+            if (se.StatusEventType == GriauleFingerprintLibrary.Events.StatusEventType.SENSOR_PLUG)
+            {
+                fingerPrint.StartCapture(source.ToString());
+            }
+            else
+            {
+                fingerPrint.StopCapture(source);
+            }
         }
     }
 }

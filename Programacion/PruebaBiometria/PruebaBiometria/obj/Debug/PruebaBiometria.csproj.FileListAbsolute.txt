@@ -1,2 +1,11 @@
 c:\users\morpheus1a\documents\visual studio 2015\Projects\PruebaBiometria\PruebaBiometria\bin\Debug\PruebaBiometria.exe.config
 C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\bin\Debug\PruebaBiometria.exe.config
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\bin\Debug\PruebaBiometria.exe
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\bin\Debug\PruebaBiometria.pdb
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\obj\Debug\PruebaBiometria.csprojResolveAssemblyReference.cache
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\obj\Debug\PruebaBiometria.Form1.resources
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\obj\Debug\PruebaBiometria.Properties.Resources.resources
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\obj\Debug\PruebaBiometria.csproj.GenerateResource.Cache
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\obj\Debug\PruebaBiometria.exe
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\obj\Debug\PruebaBiometria.pdb
+C:\Users\Morpheus1a\Documents\gitHub-\Biometria-Pruebas\PruebaBiometria\Programacion\PruebaBiometria\PruebaBiometria\bin\Debug\GriauleFingerprintLibrary.dll
