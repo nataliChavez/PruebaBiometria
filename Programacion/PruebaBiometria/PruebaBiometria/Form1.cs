@@ -62,6 +62,67 @@ namespace PruebaBiometria
             }
         }
 
+        private void DisplayImage(GriauleFingerprintLibrary.DataTypes.FingerprintTemplate template, bool identy)
+        {
+            IntPtr hdc = FingerprintCore.GetDC();
+            IntPtr image = new IntPtr();
+
+            if (identy)
+            {
+                fingerPrint.GetBiometricDisplay(template, rawImage, hdc, ref image, FingerprintConstants.GR_DEFAULT_CONTEXT);
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                fingerPrint.GetBiometricDisplay(template, rawImage, hdc, ref image, FingerprintConstants.GR_NO_CONTEXT);
+                btnIdentificar.Enabled = true;
+            }
+
+            SetImage(Bitmap.FromHbitmap(image));
+
+            FingerprintCore.ReleaseDC(hdc);
+        }
+
+        delegate void delSetQuality(int quality);
+
+        private void SetQualityBar(int quality)
+        {
+            if (prgbQuality.InvokeRequired == true)
+            {
+                this.Invoke(new delSetQuality(SetQualityBar), new object[] { quality });
+            }
+            else
+            {
+               switch(quality)
+                {
+                    case 0:
+                        {
+                            //prgbQuality.ProgressBarColor = System.Drawing.Color.LightCoral;
+                            prgbQuality.Value = prgbQuality.Maximum / 3;
+                        }break;
+
+                    case 1:
+                        {
+                            //prgbQuality.ProgressBarColor = System.Drawing.Color.YellowGreen;
+                            prgbQuality.Value = (prgbQuality.Maximum / 3) * 2;
+                        }break;
+
+                    case 2:
+                        {
+                            //prgbQuality.ProgressBarColor = System.Drawing.Color.MediumSeaGreen;
+                            prgbQuality.Value = prgbQuality.Maximum;
+                        }break;
+
+                    default:
+                        {
+                            //prgbQuality.ProgressBarColor = System.Drawing.Color.Gray;
+                            prgbQuality.Value = 0;
+                        }
+                        break;
+                }
+            }
+        }
+
         private delegate void delSetImage(Image img);
         void SetImage(Image img)
         {
